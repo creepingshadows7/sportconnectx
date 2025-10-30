@@ -442,9 +442,9 @@ app.use((error, _req, res, _next) => {
   res.status(500).json({ message: 'Unexpected server error.' });
 });
 
-app.listen(port, host, () => {
-  const displayHost = host === '0.0.0.0' ? 'localhost' : host;
-  console.log(`API running on http://${displayHost}:${port}`);
+app.listen(port, () => {
+  console.log(`✅ Server running on port ${port}`);
+
 
   if (process.env.NODE_ENV === 'debug_routes') {
     const stack = app?.router?.stack ?? app?._router?.stack ?? [];

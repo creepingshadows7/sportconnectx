@@ -43,24 +43,26 @@ app.use(express.json());
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.length === 0) {
-        return callback(null, true);
-      }
+      console.log('🌍 Incoming origin:', origin);
+      if (!origin) return callback(null, true);
+
       if (allowedOrigins.includes(origin)) {
+        console.log('✅ Allowed origin:', origin);
         return callback(null, true);
       }
+
       console.warn('❌ Blocked CORS request from:', origin);
       return callback(new Error('Not allowed by CORS'));
     },
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
-    optionsSuccessStatus: 200, // Important for legacy browsers
+    optionsSuccessStatus: 200,
   })
 );
 
-// ✅ Handle preflight OPTIONS requests manually
 app.options('*', cors());
+
 
 
 const sanitiseAccount = (account) => {

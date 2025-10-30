@@ -1,17 +1,16 @@
 {
-  "name": "server",
+  "name": "sportconnectx-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for SportConnect X",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0",
+    "express": "^4.19.2",
     "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }

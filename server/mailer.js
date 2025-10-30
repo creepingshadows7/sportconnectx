@@ -30,4 +30,3 @@ export async function sendVerificationEmail(to, code) {
 }
 
 
-RESEND_API_KEY=re_6sqPVqjT_57x3YcmrCqGenHPqDpAj9GNe

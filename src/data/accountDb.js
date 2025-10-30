@@ -35,16 +35,18 @@ const parseJsonResponse = async (response) => {
 const request = async (path, options = {}) => {
   const { method = 'GET', body, headers = {} } = options;
 
-  const response = await fetch(buildUrl(path), {
+const response = await fetch(buildUrl(path), {
   method,
-  mode: 'cors',
-  credentials: 'include',
+  mode: 'cors',              // 👈 Add this line
+  credentials: 'include',    // 👈 Add this line (important for cookies / auth)
   headers: {
     'Content-Type': 'application/json',
+    'Accept': 'application/json',
     ...headers,
   },
   body: body === null ? undefined : JSON.stringify(body),
 });
+
 
 
   const payload = await parseJsonResponse(response);

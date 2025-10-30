@@ -44,17 +44,24 @@ app.use(
   cors({
     origin(origin, callback) {
       if (!origin || allowedOrigins.length === 0) {
-        callback(null, true);
-        return;
+        return callback(null, true);
       }
       if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-        return;
+        return callback(null, true);
       }
-      callback(new Error('Not allowed by CORS'));
+      console.warn('❌ Blocked CORS request from:', origin);
+      return callback(new Error('Not allowed by CORS'));
     },
-  }),
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    optionsSuccessStatus: 200, // Important for legacy browsers
+  })
 );
+
+// ✅ Handle preflight OPTIONS requests manually
+app.options('*', cors());
+
 
 const sanitiseAccount = (account) => {
   if (!account) {

@@ -5,10 +5,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendVerificationEmail(to, code) {
   const verificationLink = `https://www.sportconnectx.com/verify-email?code=${code}`;
+
   try {
     const response = await resend.emails.send({
       from: 'SportConnect X <no-reply@sportconnectx.com>',
-      to,
+      to: typeof to === 'string' ? to : to.email ?? to.to, // ✅ Fixes Resend expecting a string
       subject: 'Verify your SportConnect X account',
       html: `
         <h2>Welcome to SportConnect X!</h2>

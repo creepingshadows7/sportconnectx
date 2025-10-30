@@ -36,13 +36,16 @@ const request = async (path, options = {}) => {
   const { method = 'GET', body, headers = {} } = options;
 
   const response = await fetch(buildUrl(path), {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      ...headers,
-    },
-    body: body == null ? undefined : JSON.stringify(body),
-  });
+  method,
+  mode: 'cors',
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json',
+    ...headers,
+  },
+  body: body === null ? undefined : JSON.stringify(body),
+});
+
 
   const payload = await parseJsonResponse(response);
 

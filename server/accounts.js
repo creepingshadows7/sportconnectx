@@ -187,6 +187,9 @@ export const findAccountWithSecretById = (id) => {
 };
 
 const generateVerificationCode = () => {
+  if (typeof crypto.randomInt === 'function') {
+    return String(crypto.randomInt(100000, 1000000)).padStart(6, '0');
+  }
   return String(100000 + Math.floor(Math.random() * 900000));
 };
 

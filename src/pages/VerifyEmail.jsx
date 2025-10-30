@@ -88,6 +88,10 @@ export default function VerifyEmail() {
             />
           </label>
 
+          <p className="form-hint">
+            Enter the code from your inbox. It expires 10 minutes after the email arrives.
+          </p>
+
           {status && <p className="form-success">{status}</p>}
           {error && <p className="form-error">{error}</p>}
 

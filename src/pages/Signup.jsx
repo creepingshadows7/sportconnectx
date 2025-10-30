@@ -157,7 +157,9 @@ export default function Signup() {
           <button type="submit" className="button primary full" disabled={submitting}>
             {submitting ? 'Creating account...' : 'Sign up'}
           </button>
-          <p className="form-hint">We&apos;ll email you a 6-digit verification code right after you sign up.</p>
+          <p className="form-hint">
+            We&apos;ll email you a 6-digit verification code right after you sign up. Use it within 10 minutes to unlock your account.
+          </p>
         </form>
       </article>
 

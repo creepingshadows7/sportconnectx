@@ -1,6 +1,7 @@
-const resolveDefaultApiBase = () => {
+﻿const resolveDefaultApiBase = () => {
   if (typeof window === 'undefined') {
-    return 'http://localhost:4000/api';
+    return 'https://sportconnectx-server.onrender.com/api';
+
   }
 
   const protocol = window.location.protocol === 'http:' || window.location.protocol === 'https:'

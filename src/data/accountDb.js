@@ -1,17 +1,8 @@
 ﻿const resolveDefaultApiBase = () => {
-  if (typeof window === 'undefined') {
-    return 'https://sportconnectx-server.onrender.com/api';
-
-  }
-
-  const protocol = window.location.protocol === 'http:' || window.location.protocol === 'https:'
-    ? window.location.protocol
-    : 'http:';
-  const hostname = window.location.hostname || 'localhost';
-  const port = import.meta.env.VITE_API_PORT ?? '4000';
-
-  return `${protocol}//${hostname}:${port}/api`;
+  // Always use your deployed backend on Render
+  return 'https://sportconnectx-server.onrender.com/api';
 };
+
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? resolveDefaultApiBase();
 const SESSION_KEY = 'scx.session.v1';

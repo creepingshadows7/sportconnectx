@@ -43,14 +43,21 @@ app.use(express.json());
 app.use(
   cors({
     origin(origin, callback) {
+      // Log every incoming request origin for debugging
       console.log('🌍 Incoming origin:', origin);
-      if (!origin) return callback(null, true);
 
+      // Accept requests without Origin (like SSR or internal fetches)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      // Allow requests from trusted origins
       if (allowedOrigins.includes(origin)) {
         console.log('✅ Allowed origin:', origin);
         return callback(null, true);
       }
 
+      // Block others
       console.warn('❌ Blocked CORS request from:', origin);
       return callback(new Error('Not allowed by CORS'));
     },
@@ -61,7 +68,9 @@ app.use(
   })
 );
 
+// Handle OPTIONS requests globally (important for CORS preflight)
 app.options('*', cors());
+
 
 
 

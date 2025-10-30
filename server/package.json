@@ -1,6 +1,7 @@
 {
   "name": "sportconnectx-server",
   "version": "1.0.0",
+  "type": "module",
   "description": "Backend for SportConnect X",
   "main": "index.js",
   "scripts": {

@@ -1,0 +1,7 @@
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+web server start: npm run dev
+
+data server start: 
+cd server	
+npm start
